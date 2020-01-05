@@ -2,28 +2,35 @@
 new_page_extension: md
 auto_deploy: false
 admin_path: "/static/admin"
-webhook_url: 
+webhook_url:
 sections:
-- type: directory
-  path: projects
-  label: Projects
-  create: documents
-  match: "**/*.md"
-  templates:
-  - project
-- type: directory
-  path: journal
-  label: Journal
-  create: documents
-  match: "**/*.md"
-  templates:
-  - journal
-- type: document
-  path: data/theme.json
-  label: Theme config
+  - type: directory
+    path: projects
+    label: Projects
+    create: documents
+    match: "**/*.md"
+    templates:
+      - project
+  - type: directory
+    path: journal
+    label: Journal
+    create: documents
+    match: "**/*.md"
+    templates:
+      - journal
+  - type: directory
+    path: conferences
+    label: Conferences
+    create: documents
+    match: "**/*.md"
+    templates:
+      - conferences
+  - type: document
+    path: data/theme.json
+    label: Theme config
 upload_dir: uploads
 public_path: "/uploads"
-front_matter_path: ''
+front_matter_path: ""
 use_front_matter_path: false
 file_template: ":filename:"
 instant_preview: true

@@ -7,8 +7,7 @@ module.exports = {
   host: "0.0.0.0",
   titleTemplate: "%s - NWA",
   siteDescription: "Creative technologist",
-  plugins: [
-    {
+  plugins: [{
       use: "@gridsome/source-filesystem",
       options: {
         path: "projects/**/*.md",
@@ -25,6 +24,18 @@ module.exports = {
       options: {
         path: "journal/**/*.md",
         typeName: "JournalPost",
+        resolveAbsolutePaths: true,
+        remark: {
+          externalLinksTarget: "_blank",
+          externalLinksRel: ["nofollow", "noopener", "noreferrer"]
+        }
+      }
+    },
+    {
+      use: "@gridsome/source-filesystem",
+      options: {
+        path: "conferences/**.md",
+        typeName: "Conference",
         resolveAbsolutePaths: true,
         remark: {
           externalLinksTarget: "_blank",

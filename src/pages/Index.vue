@@ -1,7 +1,9 @@
 <template>
   <Layout>
+    <Conference :conferences="$page.conference.edges" />
     <div class="container">
       <Hero />
+
       <ProjectsGrid :projects="$page.projects.edges" />
     </div>
     <LatestJournals :journals="$page.journals.edges" />
@@ -22,6 +24,19 @@ query Posts {
       }
     }
   },
+  conference: allConference {
+    edges {
+      node {
+        name
+				location
+        thumbnail
+				color
+				date
+        buttons {link, text}
+        content
+      }
+    }
+  }
   journals: allJournalPost (perPage: 4) {
     edges {
       node {
@@ -32,18 +47,22 @@ query Posts {
     }
   }
 }
+
+
 </page-query>
 
 <script>
-import Hero from "@/components/Hero"
-import ProjectsGrid from "@/components/ProjectsGrid"
-import LatestJournals from "@/components/LatestJournals"
+import Hero from "@/components/Hero";
+import ProjectsGrid from "@/components/ProjectsGrid";
+import LatestJournals from "@/components/LatestJournals";
+import Conference from "@/components/Conference";
 
 export default {
   components: {
     Hero,
+    Conference,
     ProjectsGrid,
     LatestJournals
   }
-}
+};
 </script>
